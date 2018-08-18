@@ -1,9 +1,6 @@
-global qq
-global ww
 
-############執行時開起網頁會有sleep睡眠等待3秒
-############為了讓電腦能夠正確抓取資料所做的延遲
-############執行完成會自動關閉不需要的網頁
+############執行時開起網頁會有sleep睡眠等待3秒才能正確抓取資料
+############執行完成會自動關閉網頁
 ############最後才會開啟我們要的網頁
 def static1(urli):  ###先撈anime1.me的首頁資訊
     url = urli
@@ -25,7 +22,6 @@ def static1(urli):  ###先撈anime1.me的首頁資訊
         data1[str(sp2[i].text)]=(temp)
     return data1
 def static2(st2):  #######根據使用者選擇的網頁進行讀取
-    #####途中開起網頁是音為版權問題必須要載入網頁才能讀取資料
     url = st2
     html = requests.get(url)
     driver = webdriver.Chrome()
@@ -85,9 +81,8 @@ def static3(st3):   ###############將選取的影片集數進行解析
     urlwork=tempfin
     print(urlwork)
     return urlwork
-def static4(st4):  #####解析影片原始資料庫位子   直接抓取影片MP4路徑
-    ##############開起網頁是為了先讓他執行JAVASCRIPT與法
-    ##############執行完成後才會提供所有資料
+def static4(st4):  #####抓取影片MP4路徑
+    ##############開起網頁是為了先讓他執行JS
     driver = webdriver.Chrome()
     driver.implicitly_wait(3)
     driver.get(st4)
@@ -122,18 +117,6 @@ def printList1(event):  ############在選擇影片集數時觸發
     #pw=lb.get(lb.curselection())
     win.destroy()
     return var2
-####################################################
-#def checkPW():
-#    if(pw.get() == "1234"):
-#        msg.set("上一夜！")
-#    else:
-#        msg.set("密碼錯誤，請修正密碼！")
-####################################################
-#def checkPW1():
-#    if(pw.get() == "1234"):
-#        msg.set("下一夜！")
-#    else:
-#        msg.set("密碼錯誤，請修正密碼！")
 ################################################## MAIN
 import requests
 from selenium import webdriver
@@ -274,12 +257,5 @@ while(userInput!="end"):    ########用來做終止條件的程式碼
         driver.get(fin)
         driver.close()
         break
-#print(data1["極道超女"])
-#print(sp1)
-###########################################################################
-
-##########################################################################
-#url = data2['極道超女 [12]']
-
 
 ##########################################################################
